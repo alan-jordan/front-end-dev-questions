@@ -38,23 +38,40 @@
  * @returns {Array.<{id: string, [name]: string, [description]: string}>}
  */
 
- function remove(array, element) {
-     const index = array.indexOf(element);
-     array.splice(index, 1);
+ const names = ['Bob', 'Alice', 'Chewbacca', 'Yoshi', 'Link']
+ const descs = ['a', 'b', 'c', 'd', 'e']
+
+ function returnRandomItem(items) {
+   return items[Math.floor(Math.random() * 5)]
  }
+
+ let userNames = []
+ for(var i = 1; i < 1000; i++) {
+   if(i % 3 == 0 || i % 5 == 0 || i % 4 ==0 || i % 7 == 0 || i % 2 == 0) {
+     userNames.push({id: `${i}`, name: `${returnRandomItem(names)}`})
+   }
+ }
+
+ let userDescriptions = []
+ for(var i = 1; i < 1000; i++) {
+   if(i % 2 == 0 || i % 5 == 0 || i % 6 ==0 || i % 8 == 0 || i % 9 == 0) {
+     userDescriptions.push({id: `${i}`, description: `${returnRandomItem(descs)}`})
+   }
+ }
+
 
 function mergeData(names, descriptions) {
 
   let mergedArray = []
 
-  let namesIdsArr = names.map((name) => name.id)
-  let descIdsArr = descriptions.map((desc) => desc.id)
+  const namesIdsArr = names.map((name) => name.id)
+  const descIdsArr = descriptions.map((desc) => desc.id)
 
-  let matchedIds = namesIdsArr.filter((id) => descIdsArr.indexOf(id) != -1)
-  let uniqueNameIds = namesIdsArr.filter((id) => matchedIds.indexOf(id) == -1)
-  let uniqueDescIds = descIdsArr.filter((id) => matchedIds.indexOf(id) == -1)
-  let combinedUniqueIds = [...uniqueNameIds, ...uniqueDescIds]
-  let combinedItems = [...names, ...descriptions]
+  const matchedIds = namesIdsArr.filter((id) => descIdsArr.indexOf(id) != -1)
+  const uniqueNameIds = namesIdsArr.filter((id) => matchedIds.indexOf(id) == -1)
+  const uniqueDescIds = descIdsArr.filter((id) => matchedIds.indexOf(id) == -1)
+  const combinedUniqueIds = [...uniqueNameIds, ...uniqueDescIds]
+  const combinedItems = [...names, ...descriptions]
 
   names.map((name) => {
     descriptions.map((desc) => {
@@ -72,37 +89,23 @@ function mergeData(names, descriptions) {
       }
     })
   })
-
+  // return mergedArray
   return mergedArray.sort((a, b) => (a.id - b.id))
+
+  // Much!!! Faster way of doing this
+  // Had to google for this.
+  // Creates a map and goes through combining elements with
+  // Shared IDs
+
+  // var hash = new Map();
+  // [...names, ...descriptions].forEach(function(object) {
+  //     hash.set(object.id, Object.assign(hash.get(object.id) || {}, object))
+  // });
+  // return Array.from(hash.values());
 }
 
-/**
- * Here are two smaller data sets to make it easy to check basic correctness.
- */
-const userNames = [
-	{ id: '1', name: 'james' },
-  { id: '2', name: 'sarah' },
-  { id: '4', name: 'bob' },
-  { id: '5', name: 'bob' },
-  { id: '7', name: 'bob' },
-  { id: '8', name: 'bob' },
-  { id: '10', name: 'bob' },
-  { id: '11', name: 'bob' },
-  { id: '13', name: 'bob' },
-  { id: '14', name: 'bob' }
-];
-const userDescriptions = [
-	{ id: '1', description: 'a' },
-  { id: '3', description: 'b' },
-  { id: '4', description: 'c' },
-  { id: '6', description: 'c' },
-  { id: '7', description: 'c' },
-  { id: '9', description: 'c' },
-  { id: '10', description: 'c' },
-  { id: '11', description: 'c' },
-  { id: '12', description: 'c' },
-  { id: '13', description: 'c' }
-];
+
+
 
 const output = mergeData(userNames, userDescriptions)
 
