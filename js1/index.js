@@ -50,9 +50,11 @@ function mergeData(names, descriptions) {
   let namesIds = names.map((name) => name.id)
   let descIds = descriptions.map((desc) => desc.id)
 
-  let matchedIds = namesIds.filter((item) => {
-      return descIds.indexOf(item) != -1
-  })
+  let matchedIds = namesIds.filter((item) => descIds.indexOf(item) != -1)
+  let uniqueNameIds = namesIds.filter((item) => matchedIds.indexOf(item) == -1)
+  let uniqueDescIds = descIds.filter((item) => matchedIds.indexOf(item) == -1)
+  let combinedUniqueIds = [...uniqueNameIds, ...uniqueDescIds]
+  let combined = [...names, ...descriptions]
 
   names.map((name) => {
     descriptions.map((desc) => {
@@ -63,26 +65,10 @@ function mergeData(names, descriptions) {
     })
   })
 
-  let uniqueNameIds = namesIds.filter((item) => {
-    return matchedIds.indexOf(item) == -1
-  })
-
-  let uniqueDescIds = descIds.filter((item) => {
-    return matchedIds.indexOf(item) == -1
-  })
-
-  uniqueNameIds.map((item) => {
-    names.map((name) => {
-      if(name.id == item) {
-        mergedArray.push(name)
-      }
-    })
-  })
-
-  uniqueDescIds.map((item) => {
-    descriptions.map((desc) => {
-      if(desc.id == item) {
-        mergedArray.push(desc)
+  combinedUniqueIds.map((id) => {
+    combined.map((item) => {
+      if(item.id == id) {
+        mergedArray.push(item)
       }
     })
   })
@@ -120,7 +106,6 @@ const userDescriptions = [
 ];
 
 const output = mergeData(userNames, userDescriptions)
-console.log(output)
 
 // Display the output in an easy to read format
 const container = document.getElementById('output');
