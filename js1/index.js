@@ -47,14 +47,14 @@ function mergeData(names, descriptions) {
 
   let mergedArray = []
 
-  let namesIds = names.map((name) => name.id)
-  let descIds = descriptions.map((desc) => desc.id)
+  let namesIdsArr = names.map((name) => name.id)
+  let descIdsArr = descriptions.map((desc) => desc.id)
 
-  let matchedIds = namesIds.filter((item) => descIds.indexOf(item) != -1)
-  let uniqueNameIds = namesIds.filter((item) => matchedIds.indexOf(item) == -1)
-  let uniqueDescIds = descIds.filter((item) => matchedIds.indexOf(item) == -1)
+  let matchedIds = namesIdsArr.filter((id) => descIdsArr.indexOf(id) != -1)
+  let uniqueNameIds = namesIdsArr.filter((id) => matchedIds.indexOf(id) == -1)
+  let uniqueDescIds = descIdsArr.filter((id) => matchedIds.indexOf(id) == -1)
   let combinedUniqueIds = [...uniqueNameIds, ...uniqueDescIds]
-  let combined = [...names, ...descriptions]
+  let combinedItems = [...names, ...descriptions]
 
   names.map((name) => {
     descriptions.map((desc) => {
@@ -66,15 +66,14 @@ function mergeData(names, descriptions) {
   })
 
   combinedUniqueIds.map((id) => {
-    combined.map((item) => {
+    combinedItems.map((item) => {
       if(item.id == id) {
         mergedArray.push(item)
       }
     })
   })
 
-  return mergedArray
-
+  return mergedArray.sort((a, b) => (a.id - b.id))
 }
 
 /**
