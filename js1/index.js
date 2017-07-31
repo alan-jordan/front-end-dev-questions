@@ -38,7 +38,12 @@
  * @returns {Array.<{id: string, [name]: string, [description]: string}>}
  */
 function mergeData(names, descriptions) {
-  console.log(names)
+  let i = 0
+  names.filter((name) => {
+    console.log(name.id == descriptions[i].id)
+    i++
+    console.log(i)
+  })
 }
 
 /**
@@ -52,9 +57,6 @@ const userDescriptions = [
 	{ id: '1', description: 'a' },
   { id: '3', description: 'b' }
 ];
-
-const output = mergeData(userNames, userDescriptions);
-
-// Display the output in an easy to read format
-const container = document.getElementById('output');
-container.textContent = JSON.stringify(output, null, 2);
+const newArray = []
+const test = mergeData(userNames, userDescriptions)
+console.log(test)

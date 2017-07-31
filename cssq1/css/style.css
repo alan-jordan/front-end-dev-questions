@@ -1,22 +1,46 @@
+header h1 {
+  margin: 0;
+  -webkit-margin-before:0em;
+  -webkit-margin-after:0em;
+}
+
 header {
   background-color: black;
   color: white;
+  float: left;
+  width: 100%;
 }
-.logo {
-  position: absolute;
-  top:10px;
-  left:20px;
+header h1 {
+  margin: 1vh;
+}
+header nav {
+  float: right;
   background-color: black;
+  margin: 2vh 1vh 1vh 1vh;
 }
-/*header:after {
-  content: "";
-  clear: both;
-  display: table;
-}*/
+
+.logo {
+  position: relative;
+  float: left;
+}
 
 .headerSearch {
   background: white url('../images/search.png') right no-repeat;
   background-size: 16px;
   padding-right: 16px;
   float: right;
+}
+
+section {
+  float: left;
+  width: 73%;
+  background-color: red;
+  clear: both;
+  padding: 1%;
+}
+aside {
+  float: right;
+  background-color: red;
+  width: 25%;
+  overflow: auto;
 }
