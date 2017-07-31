@@ -37,13 +37,14 @@
  * @param {Array.<{id: string, description: string}>} descriptions
  * @returns {Array.<{id: string, [name]: string, [description]: string}>}
  */
+
 function mergeData(names, descriptions) {
-  let i = 0
-  names.filter((name) => {
-    console.log(name.id == descriptions[i].id)
-    i++
-    console.log(i)
-  })
+  var hash = new Map();
+  [...names, ...descriptions].forEach(function(object) {
+      hash.set(object.id, Object.assign(hash.get(object.id) || {}, object))
+  });
+  console.log(hash)
+  return Array.from(hash.values());
 }
 
 /**
@@ -51,12 +52,40 @@ function mergeData(names, descriptions) {
  */
 const userNames = [
 	{ id: '1', name: 'james' },
-  { id: '2', name: 'sarah' }
+  { id: '2', name: 'sarah' },
+  { id: '4', name: 'bob' }
 ];
 const userDescriptions = [
 	{ id: '1', description: 'a' },
-  { id: '3', description: 'b' }
+  { id: '3', description: 'b' },
+  { id: '4', description: 'c' }
 ];
-const newArray = []
-const test = mergeData(userNames, userDescriptions)
-console.log(test)
+
+const output = mergeData(userNames, userDescriptions)
+console.log(output)
+
+// Display the output in an easy to read format
+const container = document.getElementById('output');
+container.textContent = JSON.stringify(output, null, 2);
+
+
+// function mergeData(names, descriptions) {
+//   for(let name of names) {
+//     for(let description of descriptions) {
+//       if(name.id == description.id) {
+//         name.description = description.description
+//         newArray.push(name)
+//       } else {
+//         console.log(name);
+//         // newArray.push(description)
+//       }
+//     }
+//   }
+// }
+
+
+// var hash = new Map();
+// names.concat(descriptions).forEach(function(obj) {
+//     hash.set(obj.id, Object.assign(hash.get(obj.id) || {}, obj))
+// });
+// return Array.from(hash.values());
