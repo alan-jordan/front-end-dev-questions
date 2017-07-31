@@ -31,16 +31,17 @@ header nav {
   float: right;
 }
 
-section {
+main {
   float: left;
-  width: 73%;
+  width: 74vw;
   background-color: red;
   clear: both;
-  padding: 1%;
+  padding: 1vw;
 }
 aside {
   float: right;
   background-color: red;
-  width: 25%;
+  width: 24vw;
+  /*padding: 1vw;*/
   overflow: auto;
 }
