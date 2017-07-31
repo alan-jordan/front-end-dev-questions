@@ -1,0 +1,22 @@
+header {
+  background-color: black;
+  color: white;
+}
+.logo {
+  position: absolute;
+  top:10px;
+  left:20px;
+  background-color: black;
+}
+/*header:after {
+  content: "";
+  clear: both;
+  display: table;
+}*/
+
+.headerSearch {
+  background: white url('../images/search.png') right no-repeat;
+  background-size: 16px;
+  padding-right: 16px;
+  float: right;
+}
