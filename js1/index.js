@@ -38,13 +38,57 @@
  * @returns {Array.<{id: string, [name]: string, [description]: string}>}
  */
 
+ function remove(array, element) {
+     const index = array.indexOf(element);
+     array.splice(index, 1);
+ }
+
 function mergeData(names, descriptions) {
-  var hash = new Map();
-  [...names, ...descriptions].forEach(function(object) {
-      hash.set(object.id, Object.assign(hash.get(object.id) || {}, object))
-  });
-  console.log(hash)
-  return Array.from(hash.values());
+
+  let mergedArray = []
+
+  let namesIds = names.map((name) => name.id)
+  let descIds = descriptions.map((desc) => desc.id)
+
+  let matchedIds = namesIds.filter((item) => {
+      return descIds.indexOf(item) != -1
+  })
+
+  names.map((name) => {
+    descriptions.map((desc) => {
+      if(name.id == desc.id) {
+        name.description = desc.description
+        mergedArray.push(name)
+      }
+    })
+  })
+
+  let uniqueNameIds = namesIds.filter((item) => {
+    return matchedIds.indexOf(item) == -1
+  })
+
+  let uniqueDescIds = descIds.filter((item) => {
+    return matchedIds.indexOf(item) == -1
+  })
+
+  uniqueNameIds.map((item) => {
+    names.map((name) => {
+      if(name.id == item) {
+        mergedArray.push(name)
+      }
+    })
+  })
+
+  uniqueDescIds.map((item) => {
+    descriptions.map((desc) => {
+      if(desc.id == item) {
+        mergedArray.push(desc)
+      }
+    })
+  })
+
+  return mergedArray
+
 }
 
 /**
@@ -53,12 +97,26 @@ function mergeData(names, descriptions) {
 const userNames = [
 	{ id: '1', name: 'james' },
   { id: '2', name: 'sarah' },
-  { id: '4', name: 'bob' }
+  { id: '4', name: 'bob' },
+  { id: '5', name: 'bob' },
+  { id: '7', name: 'bob' },
+  { id: '8', name: 'bob' },
+  { id: '10', name: 'bob' },
+  { id: '11', name: 'bob' },
+  { id: '13', name: 'bob' },
+  { id: '14', name: 'bob' }
 ];
 const userDescriptions = [
 	{ id: '1', description: 'a' },
   { id: '3', description: 'b' },
-  { id: '4', description: 'c' }
+  { id: '4', description: 'c' },
+  { id: '6', description: 'c' },
+  { id: '7', description: 'c' },
+  { id: '9', description: 'c' },
+  { id: '10', description: 'c' },
+  { id: '11', description: 'c' },
+  { id: '12', description: 'c' },
+  { id: '13', description: 'c' }
 ];
 
 const output = mergeData(userNames, userDescriptions)
@@ -68,24 +126,11 @@ console.log(output)
 const container = document.getElementById('output');
 container.textContent = JSON.stringify(output, null, 2);
 
-
-// function mergeData(names, descriptions) {
-//   for(let name of names) {
-//     for(let description of descriptions) {
-//       if(name.id == description.id) {
-//         name.description = description.description
-//         newArray.push(name)
-//       } else {
-//         console.log(name);
-//         // newArray.push(description)
-//       }
-//     }
-//   }
-// }
-
-
+//
 // var hash = new Map();
-// names.concat(descriptions).forEach(function(obj) {
-//     hash.set(obj.id, Object.assign(hash.get(obj.id) || {}, obj))
+// [...names, ...descriptions].forEach(function(object) {
+//   console.log(hash.get(object.id))
+//     hash.set(object.id, Object.assign(hash.get(object.id) || {}, object))
 // });
+// console.log(hash)
 // return Array.from(hash.values());
