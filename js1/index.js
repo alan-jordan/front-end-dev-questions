@@ -46,19 +46,18 @@
  }
 
  let userNames = []
- for(var i = 1; i < 1000; i++) {
-   if(i % 3 == 0 || i % 5 == 0 || i % 4 ==0 || i % 7 == 0 || i % 2 == 0) {
+ for(var i = 1; i < 2100; i++) {
+   if(i % 3 == 0 || i % 5 == 0 || i % 7 == 0 ) {
      userNames.push({id: `${i}`, name: `${returnRandomItem(names)}`})
    }
  }
 
  let userDescriptions = []
- for(var i = 1; i < 1000; i++) {
-   if(i % 2 == 0 || i % 5 == 0 || i % 6 ==0 || i % 8 == 0 || i % 9 == 0) {
+ for(var i = 1; i < 3700; i++) {
+   if(i % 6 ==0 || i % 8 == 0 || i % 9 == 0) {
      userDescriptions.push({id: `${i}`, description: `${returnRandomItem(descs)}`})
    }
  }
-
 
 function mergeData(names, descriptions) {
 
@@ -70,6 +69,7 @@ function mergeData(names, descriptions) {
   const matchedIds = namesIdsArr.filter(id => descIdsArr.indexOf(id) != -1)
   const uniqueNameIds = namesIdsArr.filter(id => matchedIds.indexOf(id) == -1)
   const uniqueDescIds = descIdsArr.filter(id => matchedIds.indexOf(id) == -1)
+  console.log(uniqueDescIds)
   const combinedUniqueIds = [...uniqueNameIds, ...uniqueDescIds]
   const combinedItems = [...names, ...descriptions]
 
@@ -89,7 +89,7 @@ function mergeData(names, descriptions) {
       }
     })
   })
-  
+
   return mergedArray.sort((a, b) => (a.id - b.id))
 
   // Much!!! Faster way of doing this
@@ -112,12 +112,3 @@ const output = mergeData(userNames, userDescriptions)
 // Display the output in an easy to read format
 const container = document.getElementById('output');
 container.textContent = JSON.stringify(output, null, 2);
-
-//
-// var hash = new Map();
-// [...names, ...descriptions].forEach(function(object) {
-//   console.log(hash.get(object.id))
-//     hash.set(object.id, Object.assign(hash.get(object.id) || {}, object))
-// });
-// console.log(hash)
-// return Array.from(hash.values());
