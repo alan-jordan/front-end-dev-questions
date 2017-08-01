@@ -64,12 +64,12 @@ function mergeData(names, descriptions) {
 
   let mergedArray = []
 
-  const namesIdsArr = names.map((name) => name.id)
-  const descIdsArr = descriptions.map((desc) => desc.id)
+  const namesIdsArr = names.map(name => name.id)
+  const descIdsArr = descriptions.map(desc => desc.id)
 
-  const matchedIds = namesIdsArr.filter((id) => descIdsArr.indexOf(id) != -1)
-  const uniqueNameIds = namesIdsArr.filter((id) => matchedIds.indexOf(id) == -1)
-  const uniqueDescIds = descIdsArr.filter((id) => matchedIds.indexOf(id) == -1)
+  const matchedIds = namesIdsArr.filter(id => descIdsArr.indexOf(id) != -1)
+  const uniqueNameIds = namesIdsArr.filter(id => matchedIds.indexOf(id) == -1)
+  const uniqueDescIds = descIdsArr.filter(id => matchedIds.indexOf(id) == -1)
   const combinedUniqueIds = [...uniqueNameIds, ...uniqueDescIds]
   const combinedItems = [...names, ...descriptions]
 
@@ -89,7 +89,7 @@ function mergeData(names, descriptions) {
       }
     })
   })
-  // return mergedArray
+  
   return mergedArray.sort((a, b) => (a.id - b.id))
 
   // Much!!! Faster way of doing this
