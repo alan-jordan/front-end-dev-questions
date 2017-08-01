@@ -1,0 +1,16 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+.main {
+    display: flex;
+    flex-direction: row;
+    min-height: 100%;
+    align-items: stretch;
+}
+.sidebar {
+    display: flex;
+    background: green;
+order: 1;
+padding: 1rem;
+}
