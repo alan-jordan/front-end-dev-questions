@@ -28,6 +28,9 @@ html, body, .container {
   background-size: 16px;
   width: 92%;
 }
+.header input {
+  color: black;
+}
 .content {
   background: white;
   height: 100%;

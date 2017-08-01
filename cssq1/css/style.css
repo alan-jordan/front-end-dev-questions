@@ -1,10 +1,11 @@
 body {
   background-color: white;
 }
+
 header h1 {
   margin: 0;
-  -webkit-margin-before:0em;
-  -webkit-margin-after:0em;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
 }
 
 header {
@@ -13,14 +14,17 @@ header {
   float: left;
   width: 100%;
 }
+
 header h1 {
-  margin: 1vh;
+  padding: 1vh 0 1vh 1vw;
 }
+
 header nav {
   float: right;
   background-color: black;
   margin: 2vh 1vh 1vh 1vh;
 }
+
 header input {
   color: black;
 }
@@ -37,27 +41,33 @@ header input {
   float: right;
 }
 
-.main .container {
-    padding-right: 330px;
-    overflow: hidden;
+nav {
+  padding: 1vh 1vw 1vh 0;
 }
+
+.main {
+  padding-right: 20vw;
+  overflow: hidden;
+}
+
 .content {
-    float: left;
-    width: 100%;
-    background-color: #fff;
+  float: left;
+  width: 100%;
+  background-color: #fff;
 }
+
 .sidebar {
-    float: right;
-    margin-right: -330px;
-    width: 330px;
-    background-color: #aaa;
+  float: right;
+  margin-right: -20vw;
+  width: 20vw;
+  background-color: #aaa;
 }
-.content,
-.sidebar {
-    padding-bottom: 99999px;
-    margin-bottom: -99999px;
+
+.content, .sidebar {
+  padding-bottom: 99999px;
+  margin-bottom: -99999px;
 }
-section,
-aside {
-    padding: 30px;
+
+section, aside {
+  padding: 0 1vw 0 1vw;
 }
