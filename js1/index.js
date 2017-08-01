@@ -38,59 +38,58 @@
  * @returns {Array.<{id: string, [name]: string, [description]: string}>}
  */
 
- const names = ['Bob', 'Alice', 'Chewbacca', 'Yoshi', 'Link']
- const descs = ['a', 'b', 'c', 'd', 'e']
+ const names = ['Bob', 'Alice', 'Chewbacca', 'Yoshi', 'Link'];
+ const descs = ['a', 'b', 'c', 'd', 'e'];
 
  function returnRandomItem(items) {
-   return items[Math.floor(Math.random() * 5)]
+   return items[Math.floor(Math.random() * 5)];
  }
 
- let userNames = []
+ let userNames = [];
  for(var i = 1; i < 2100; i++) {
-   if(i % 3 == 0 || i % 5 == 0 || i % 7 == 0 ) {
-     userNames.push({id: `${i}`, name: `${returnRandomItem(names)}`})
+   if(i % 3 == 0 || i % 5 == 0 || i % 7 == 0) {
+     userNames.push({id: `${i}`, name: `${returnRandomItem(names)}`});
    }
  }
 
- let userDescriptions = []
+ let userDescriptions = [];
  for(var i = 1; i < 3700; i++) {
    if(i % 6 ==0 || i % 8 == 0 || i % 9 == 0) {
-     userDescriptions.push({id: `${i}`, description: `${returnRandomItem(descs)}`})
+     userDescriptions.push({id: `${i}`, description: `${returnRandomItem(descs)}`});
    }
  }
 
 function mergeData(names, descriptions) {
 
-  let mergedArray = []
+  let mergedArray = [];
 
-  const namesIdsArr = names.map(name => name.id)
-  const descIdsArr = descriptions.map(desc => desc.id)
+  const namesIdsArr = names.map(name => name.id);
+  const descIdsArr = descriptions.map(desc => desc.id);
 
-  const matchedIds = namesIdsArr.filter(id => descIdsArr.indexOf(id) != -1)
-  const uniqueNameIds = namesIdsArr.filter(id => matchedIds.indexOf(id) == -1)
-  const uniqueDescIds = descIdsArr.filter(id => matchedIds.indexOf(id) == -1)
-  console.log(uniqueDescIds)
-  const combinedUniqueIds = [...uniqueNameIds, ...uniqueDescIds]
-  const combinedItems = [...names, ...descriptions]
+  const matchedIds = namesIdsArr.filter(id => descIdsArr.indexOf (id) != -1);
+  const uniqueNameIds = namesIdsArr.filter(id => matchedIds.indexOf (id) == -1);
+  const uniqueDescIds = descIdsArr.filter(id => matchedIds.indexOf (id) == -1);
+  const combinedUniqueIds = [...uniqueNameIds, ...uniqueDescIds];
+  const combinedItems = [...names, ...descriptions];
 
   names.map((name) => {
     descriptions.map((desc) => {
       if(name.id == desc.id) {
-        name.description = desc.description
-        mergedArray.push(name)
+        name.description = desc.description;
+        mergedArray.push(name);
       }
-    })
-  })
+    });
+  });
 
   combinedUniqueIds.map((id) => {
     combinedItems.map((item) => {
       if(item.id == id) {
-        mergedArray.push(item)
+        mergedArray.push(item);
       }
-    })
-  })
+    });
+  });
 
-  return mergedArray.sort((a, b) => (a.id - b.id))
+  return mergedArray.sort((a, b) => (a.id - b.id));
 
   // Much!!! Faster way of doing this
   // Had to google for this.
@@ -99,15 +98,12 @@ function mergeData(names, descriptions) {
 
   // var hash = new Map();
   // [...names, ...descriptions].forEach(function(object) {
-  //     hash.set(object.id, Object.assign(hash.get(object.id) || {}, object))
+  //     hash.set(object.id, Object.assign(hash.get(object.id) || {}, object));
   // });
   // return Array.from(hash.values());
 }
 
-
-
-
-const output = mergeData(userNames, userDescriptions)
+const output = mergeData(userNames, userDescriptions);
 
 // Display the output in an easy to read format
 const container = document.getElementById('output');
