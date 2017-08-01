@@ -1,0 +1,64 @@
+body {
+  background-color: white;
+}
+header h1 {
+  margin: 0;
+  -webkit-margin-before:0em;
+  -webkit-margin-after:0em;
+}
+
+header {
+  background-color: black;
+  color: white;
+  float: left;
+  width: 100%;
+  position: fixed;
+  z-index: 1
+}
+header h1 {
+  margin: 1vh;
+}
+header nav {
+  float: right;
+  background-color: black;
+  margin: 2vh 1vh 1vh 1vh;
+}
+header input {
+  color: black;
+}
+
+.logo {
+  position: relative;
+  float: left;
+}
+
+.headerSearch {
+  background: white url('../images/search.png') right no-repeat;
+  background-size: 16px;
+  padding-right: 16px;
+  float: right;
+}
+.main {
+  overflow: hidden;
+}
+.content {
+  padding-top: 4%;
+  padding-left: 1%;
+  float: left;
+  width: 73%;
+  background-color: #fff;
+}
+
+.sidebar {
+  padding-top: 4%;
+  margin-left: 75%;
+  width: 25%;
+  background-color: #aaa;
+  position: fixed;
+}
+
+.content,
+.sidebar {
+    padding-bottom: 99999px;
+    margin-bottom: -99999px;
+}
