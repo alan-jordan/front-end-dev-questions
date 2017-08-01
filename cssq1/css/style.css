@@ -22,7 +22,7 @@ header h1 {
 header nav {
   float: right;
   background-color: black;
-  margin: 2vh 1vh 1vh 1vh;
+  padding: 2vh 1vw 1vh 0;
 }
 
 header input {
@@ -39,10 +39,6 @@ header input {
   background-size: 16px;
   padding-right: 16px;
   float: right;
-}
-
-nav {
-  padding: 1vh 1vw 1vh 0;
 }
 
 .main {
