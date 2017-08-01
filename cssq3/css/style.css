@@ -4,33 +4,33 @@ html, body, .container {
 
 .header h1 {
   margin: 0;
-  -webkit-margin-before:0em;
-  -webkit-margin-after:0em;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
 }
+
 .header {
-  height: 5vh;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: space-between;
   background-color: black;
   color: white;
-  padding: 1vh 0 1vh 0;
+  padding: 1vh 0 1vh 1vw;
 }
-.logo {
-  padding-left: 1vw;
-}
+
 .search {
-  padding-right: 1vw;
+  padding: 1vh 1vw 1vh 0;
 }
+
 .headerSearch {
   background: white url('../images/search.png') right no-repeat;
   background-size: 16px;
-  width: 92%;
 }
+
 .header input {
   color: black;
 }
+
 .content {
   background: white;
   height: 100%;
@@ -42,12 +42,11 @@ html, body, .container {
 .sidebar {
   background: #aaa;
   height: 100%;
-  min-width: 15vw;
+  min-width: 18vw;
   padding: 0 1vw 0 1vw;
 }
 
-
 .main {
   display: flex;
-  height: calc(100% - 5vh);
+  height: calc(100% - 7vh);
 }
