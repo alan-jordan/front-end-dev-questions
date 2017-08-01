@@ -1,11 +1,6 @@
 body {
   background-color: white;
 }
-header h1 {
-  margin: 0;
-  -webkit-margin-before:0em;
-  -webkit-margin-after:0em;
-}
 
 header {
   background-color: black;
@@ -15,14 +10,20 @@ header {
   position: fixed;
   z-index: 1
 }
+
 header h1 {
-  margin: 1vh;
+  margin: 0;
+  -webkit-margin-before: 0em;
+  -webkit-margin-after: 0em;
+  padding: 1vh 0 1vh 1vw;
 }
+
 header nav {
   float: right;
   background-color: black;
-  margin: 2vh 1vh 1vh 1vh;
+  padding: 2vh 1vw 1vh 0;
 }
+
 header input {
   color: black;
 }
@@ -31,40 +32,36 @@ header input {
   position: relative;
   float: left;
 }
-nav {
-  width: 15vw;
-}
+
 .headerSearch {
   background: white url('../images/search.png') right no-repeat;
   background-size: 16px;
   padding-right: 16px;
   float: right;
-  width: 100%;
 }
 .main {
   overflow: hidden;
 }
 .content {
-  padding-top: 3%;
-  padding-left: 1%;
+  padding: 8vh 1vw 0 1vw;
   float: left;
   width: 78%;
   background-color: #fff;
 }
 
 .sidebar {
-  padding-top: 3%;
+  padding: 8vh 1vw 0 1vw;
   margin-left: 80%;
   width: 19%;
   background-color: #aaa;
   position: fixed;
 }
-.sidebar h2{
-  margin-left: 1vw;
+
+.sidebar h2 {
+  /*margin-left: 1vw;*/
 }
 
-.content,
-.sidebar {
-    padding-bottom: 99999px;
-    margin-bottom: -99999px;
+.content, .sidebar {
+  padding-bottom: 99999px;
+  margin-bottom: -99999px;
 }
