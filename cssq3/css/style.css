@@ -45,6 +45,9 @@ html, body, .container {
   min-width: 18vw;
   padding: 0 1vw 0 1vw;
 }
+.sidebar h2 {
+  text-align: center;
+}
 
 .main {
   display: flex;
